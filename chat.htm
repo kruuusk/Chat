@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>La mia prima CHAT</title>
+	<style type="text/css">
+		{box-sizing: border-box;}
+
+		/* Button used to open the chat form - fixed at the bottom of the page */
+		.open-button {
+		  background-color: #6D7B8D;
+		  color: white;
+		  padding: 16px 20px;
+		  border: none;
+		  cursor: pointer;
+		  opacity: 0.8;
+		  position: fixed;
+		  bottom: 23px;
+		  right: 28px;
+		  width: 280px;
+		  border-radius: 8px;
+		  font-weight: bold;
+		}
+
+		/* The popup chat - hidden by default */
+		.chat-popup {
+		  display: none;
+		  position: fixed;
+		  bottom: 0;
+		  right: 15px;
+		  border: 3px solid #f1f1f1;
+		  z-index: 9;
+		  border-radius: 8px;
+		}
+
+		/* Add styles to the form container */
+		.form-container {
+		  max-width: 300px;
+		  padding: 10px;
+		  background-color: white;
+		  border-radius: 8px;
+		}
+
+		/* Full-width textarea */
+		.form-container textarea {
+		  width: 89%;
+		  padding: 15px;
+		  margin: 5px 0 22px 0;
+		  border: none;
+		  background: #6D7B8D;
+		  resize: none;
+		  min-height: 30px;
+		  border-radius: 8px;
+		}
+
+		/* When the textarea gets focus, do something */
+		.form-container textarea:focus {
+		  background-color: #616D7E;
+		  outline: none;
+		}
+
+		/* Set a style for the submit/login button */
+		.form-container .btn {
+		  background-color: #4CAF50;
+		  color: white;
+		  padding: 16px 20px;
+		  border: none;
+		  cursor: pointer;
+		  width: 100%;
+		  margin-bottom:10px;
+		  opacity: 0.8;
+		  border-radius: 8px;
+		  font-weight: bold;
+		}
+
+		/* Add a red background color to the cancel button */
+		.form-container .cancel {
+		  background-color: red;
+		  border-radius: 8px;
+		  font-weight: bold;
+		}
+
+		/* Add some hover effects to buttons */
+		.form-container .btn:hover, .open-button:hover {
+		  opacity: 1;
+		} 
+
+		#msg {
+		  color: white;
+		  font-weight: bold;
+		}
+
+		#chat {
+		  width: 89%;
+		  padding: 15px;
+		  margin: 5px 0 22px 0;
+		  border: none;
+		  background: #f1f1f1;
+		  resize: none;
+		  height: 200px;
+		  border-radius: 8px;
+		  font-weight: bold;
+		  overflow: auto;	  
+		}
+
+		.messaggio {
+		  width: max-content;
+		  padding: 10px;
+  		  border-radius: 8px;
+		  color: white;
+		  background: #6D7B8D;
+		  float: right;
+		  text-align: center;
+		  border: 2px solid #dedede;
+		  
+		}
+
+		.avatar img {
+		  float: right;
+  		  max-width: 42px;
+		  width: 80%;
+		  border-radius: 50%;
+		  clear: both;
+		}
+
+		h1 {
+		  color: #6D7B8D;
+		}
+
+		label {
+		  color: #6D7B8D;
+		}
+
+				/* Button used to open the chat form - fixed at the bottom of the page */
+		.open-button2 {
+		  background-color: #6D7B8D;
+		  color: white;
+		  padding: 16px 20px;
+		  border: none;
+		  cursor: pointer;
+		  opacity: 0.8;
+		  position: fixed;
+		  bottom: 20px;
+		  left: 28px;
+		  width: 280px;
+		  border-radius: 8px;
+		  font-weight: bold;
+		}
+
+		/* The popup chat - hidden by default */
+		.chat-popup2 {
+		  display: none;
+		  position: fixed;
+		  bottom: 0px;
+		  left: 0px;
+		  border: 3px solid #f1f1f1;
+		  z-index: 9;
+		  border-radius: 8px;
+		}
+
+		/* Add styles to the form container */
+		.form-container2 {
+		  max-width: 300px;
+		  padding: 10px;
+		  background-color: white;
+		  border-radius: 8px;
+		}
+
+		/* Full-width textarea */
+		.form-container2 textarea {
+		  width: 89%;
+		  padding: 15px;
+		  margin: 5px 0 22px 0;
+		  border: none;
+		  background: #6D7B8D;
+		  resize: none;
+		  min-height: 30px;
+		  border-radius: 8px;
+		}
+
+		/* When the textarea gets focus, do something */
+		.form-container2 textarea:focus {
+		  background-color: #616D7E;
+		  outline: none;
+		}
+
+		/* Set a style for the submit/login button */
+		.form-container2 .btn2 {
+		  background-color: #4CAF50;
+		  color: white;
+		  padding: 16px 20px;
+		  border: none;
+		  cursor: pointer;
+		  width: 100%;
+		  margin-bottom:10px;
+		  opacity: 0.8;
+		  border-radius: 8px;
+		  font-weight: bold;
+		}
+
+		/* Add a red background color to the cancel button */
+		.form-container2 .cancel2 {
+		  background-color: red;
+		  border-radius: 8px;
+		  font-weight: bold;
+		}
+
+		/* Add some hover effects to buttons */
+		.form-container2 .btn2:hover, .open-button2:hover {
+		  opacity: 1;
+		} 
+
+		#msg2 {
+		  color: white;
+		  font-weight: bold;
+		}
+
+		#chat2 {
+		  width: 89%;
+		  padding: 15px;
+		  margin: 5px 0 22px 0;
+		  border: none;
+		  background: #f1f1f1;
+		  resize: none;
+		  height: 200px;
+		  border-radius: 8px;
+		  font-weight: bold;
+		  overflow: auto;  	  
+		}
+
+		.messaggio2 {
+		  width: max-content;
+		  padding: 10px;
+  		  border-radius: 8px;
+		  color: white;
+		  background: #6D7B8D;
+		  float: left;
+		  text-align: center;
+		  border: 2px solid #dedede;
+		  
+		}
+
+		.avatar2 img {
+		  float: left;
+  		  max-width: 42px;
+		  width: 80%;
+		  border-radius: 50%;
+		  clear: both;
+		}
+
+		h1 {
+		  color: #6D7B8D;
+		}
+
+		label {
+		  color: #6D7B8D;
+		}
+	</style>
+	<script type="text/javascript">
+		function openForm() {
+		  	document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+		  	document.getElementById("myForm").style.display = "none";
+		} 
+		
+		function sendMsg(){
+			var testoMsg = document.getElementById("msg").value;
+			var pag = document.getElementById("chat");
+			var pag2 = document.getElementById("chat2");
+			pag.innerHTML = pag.innerHTML + '<div class=avatar>' + '<img src="squalo.jpg">' + '</div>' + '<div class=messaggio>' + testoMsg + '</div>';
+			pag2.innerHTML = pag2.innerHTML + '<div class=avatar2>' + '<img src="squalo.jpg">' + '</div>' + '<div class=messaggio2>' + testoMsg + '</div>';
+			document.getElementById("msg").value = ""
+		}
+
+		function openForm2() {
+		  	document.getElementById("myForm2").style.display = "block";
+		}
+
+		function closeForm2() {
+		  	document.getElementById("myForm2").style.display = "none";
+		} 
+
+		function sendMsg2(){
+			var testoMsg = document.getElementById("msg2").value;
+			var pag = document.getElementById("chat2");
+			var pag2 = document.getElementById("chat");
+			pag.innerHTML = pag.innerHTML + '<div class=avatar>' + '<img src="RAPED.jpg">' + '</div>' + '<div class=messaggio>' + testoMsg + '</div>';
+			pag2.innerHTML = pag2.innerHTML + '<div class=avatar2>' + '<img src="RAPED.jpg">' + '</div>' + '<div class=messaggio2>' + testoMsg + '</div>';
+			document.getElementById("msg2").value = ""
+		}
+	</script>
+</head>
+<body>
+	<button type="button" class="open-button" onclick="openForm()">Open</button>
+	<div class="chat-popup" id="myForm">
+		<form class="form-container">
+	    <h1>Chat1</h1>
+	    <div id="chat">
+    	</div>
+	    <label for="msg"><b>Write Msg</b></label>
+	    <textarea id="msg" placeholder="Type message.." name="msg" required></textarea>
+	    <button type="button" class="btn" onclick="sendMsg()">Send</button>
+	    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+	    </form>
+	<button type="button" class="open-button2" onclick="openForm2()">Open</button>
+	<div class="chat-popup2" id="myForm2">
+		<form class="form-container2">
+	    <h1>Chat2</h1>
+	    <div id="chat2">
+    	</div>
+	    <label for="msg2"><b>Write Msg</b></label>
+	    <textarea id="msg2" placeholder="Type message.." name="msg2" required></textarea>
+	    <button type="button" class="btn2" onclick="sendMsg2()">Send</button>
+	    <button type="button" class="btn2 cancel2" onclick="closeForm2()">Close</button>
+	    </form>
+	</div>
+	
+</body>
+</html>
